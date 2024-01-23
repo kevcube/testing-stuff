@@ -17,9 +17,9 @@ jobs:
     if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # - uses: actions/setup-node@v4
 
-      - run: npm run build
+      # - run: npm run build
 
       - uses: release-drafter/release-drafter@v5
         env:
