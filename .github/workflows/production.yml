@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          git remote set-url origin https://${{ secrets.PATTT }}@$github.com/${{ github.repository }}
+          git remote set-url origin https://${{ secrets.PATTT }}@github.com/${{ github.repository }}
           git push --force origin develop:main
     env:
       GIT_ASKPASS: echo
