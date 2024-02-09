@@ -17,9 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          git config --global user.email "your_email@example.com"
-          git config --global user.name "Your Name"
-          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n x-access-token:${{ secrets.PATTT }} | base64 --wrap=0)"
+          git remote set-url origin https://${{ secrets.PATTT }}@$github.com/${{ github.repository }}
           git push --force origin develop:main
     env:
       GIT_ASKPASS: echo
