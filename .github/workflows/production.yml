@@ -16,8 +16,11 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.user.login == 'github-actions[bot]'
     steps:
       - uses: actions/checkout@v4
-      - run: git push --force origin develop:main
-        env:
-          GIT_ASKPASS: echo
-          HTTPS_PROXY_ASKPASS: echo
-          GITHUB_TOKEN: ${{ secrets.PATTT }}
+      - run: |
+          git config --global user.email "your_email@example.com"
+          git config --global user.name "Your Name"
+          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n x-access-token:${{ secrets.PATTT }} | base64 --wrap=0)"
+          git push --force origin develop:main
+    env:
+      GIT_ASKPASS: echo
+      HTTPS_PROXY_ASKPASS: echo
