@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/kevcube/testing-stuff/compare/v1.3.0...v1.4.0) (2024-02-09)
+
+
+### Features
+
+* fix ([119b290](https://github.com/kevcube/testing-stuff/commit/119b290e6a2833657810ac7344e118d87933adc1))
+
 ## [1.3.0](https://github.com/kevcube/testing-stuff/compare/v1.2.0...v1.3.0) (2024-02-09)
 
 
