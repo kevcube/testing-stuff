@@ -13,8 +13,11 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && github.event.pull_request.user.login == 'github-actions[bot]'
     steps:
-      - run: echo ${{ github.actor }}
       - uses: actions/checkout@v4
       - run: git push --force origin develop:main
+        env:
+          GIT_ASKPASS: echo
+          HTTPS_PROXY_ASKPASS: echo
+          GITHUB_TOKEN: ${{ secrets.PATTT }}
