@@ -1,11 +1,9 @@
 name: Production Deploy
 
 on:
-  pull_request:
+  push:
     branches:
       - develop
-    types:
-      - closed
 
 permissions:
   contents: write
@@ -13,12 +11,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && github.event.pull_request.user.login == 'github-actions[bot]'
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          git remote set-url origin https://${{ secrets.PATTT }}@github.com/${{ github.repository }}
-          git push --force origin develop:main
-    env:
-      GIT_ASKPASS: echo
-      HTTPS_PROXY_ASKPASS: echo
+        with:
+          token: ${{ secrets.PATTT }}
+      - run: git push --force origin develop:main
